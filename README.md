@@ -1,5 +1,8 @@
 # OSM Building Detection Server
 
+GeoAI as a Service
+
+![geoaiaas](figures/geoaiaas.png)
 ## Creating Python Virtual Environments
 
 ```shell
@@ -9,4 +12,4 @@ myvenv/Scripts/activate.bat
 myvenv/Scripts/activate.ps1
 ```
 
-**Note: If conda environment is active, deactivate it firstly via `conda deactivate`.**
+**Note: If conda environment is active, deactivate it firstly via `conda deactivate`.**git
