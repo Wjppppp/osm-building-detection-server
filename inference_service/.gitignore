@@ -1,0 +1,4 @@
+venv_inference
+src/label/data/*
+src/inference/prediction
+src/inference/models/*

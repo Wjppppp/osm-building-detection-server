@@ -1,0 +1,24 @@
+image:
+  api_token: AhUiTb_1C9bJJJBbIuwuHOZctXHnvyeVmM5jGtErwZ5U9IYe96rJEGZ-QwIY_J9V
+  img_api: bing
+  img_url: http://t0.tiles.virtualearth.net/tiles/a{q}.png?g=854&mkt=en-US&token={token}
+  zoom: 18
+osm:
+  api: ohsome
+  bboxes:
+  - 10.204479491689979
+  - 5.687460325677804
+  - 10.208124355400566
+  - 5.691038531755592
+  tags:
+  - key: building
+    label: building
+    value: ''
+  timestamp: 2022-12-31
+  types: polygon
+  url: https://api.ohsome.org/v1/elements/geometry
+project:
+  name: inference
+  project_time: 2023-05-03
+  task: object detection
+  workspace: ./data
