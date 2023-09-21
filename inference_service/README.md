@@ -11,7 +11,7 @@ docker build -t inference-service:<TAG> .
 ```shell
 docker run --name inference inference-service:<TAG>
 # bind mount
-docker run -it --gpus all --name inference -p 8888:8888 -p 6006:6006 --mount type=bind,source="$(pwd)",target=/app inference-service:<TAG>
+docker run -it --gpus all --name inference -p 8888:8888 -p 6006:6006 -p 7001:7001 --mount type=bind,source="$(pwd)",target=/app inference-service:<TAG>
 ```
 
 Create a virtual environment

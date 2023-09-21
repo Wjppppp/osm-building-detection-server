@@ -1,23 +1,31 @@
+from . import *
 import os
+import shutil
 import yaml
 import datetime
 import geojson
 
+def refresh_dir(PATH):
+    if len(os.listdir(PATH)) >= 1:
+        shutil.rmtree(PATH)
+        os.makedirs(PATH)
+
 def generate_image_tiles(extend):
 
     #  modify config.yaml
-    with open("./config/config_template.yaml", "r") as ymlfile:
+    with open(PATH_CONFIG_TEMPLATE, "r") as ymlfile:
         cfg = yaml.load(ymlfile, Loader=yaml.Loader)
-        print(cfg)
+        # print(cfg)
 
     cfg['osm']['bboxes'] = extend
 
-    with open("./config/config_test.yaml","w") as file:
+    with open(PATH_CONFIG_TEST,"w") as file:
         yaml.dump(cfg, file)
+        print(f'config: {cfg}')
 
 
     # ohsome2label vector
-    os.system('ohsome2label --config config/config_test.yaml vector')
+    os.system(f'ohsome2label --schema {PATH_CONFIG_SCHEMA} --config {PATH_CONFIG_TEST} vector')
 
 
     # create geojson extend
@@ -29,16 +37,24 @@ def generate_image_tiles(extend):
     )]
     feature_collection = geojson.FeatureCollection(feature)
 
-    with open("./data/other/raw/building_building_.geojson", 'w') as f:
+    # print(f'geojson {feature_collection}')
+
+    with open(PATH_GEOJSON_RAW, 'w') as f:
         geojson.dump(feature_collection, f)
 
-    # ohsome2label label
-    os.system('ohsome2label --config config/config_test.yaml label')
-    # ohsome2label image
-    os.system('ohsome2label --config config/config_test.yaml image')
+    refresh_dir(PATH_IMAGE)
+    refresh_dir(PATH_TILE)
+    refresh_dir(PATH_LABEL)
 
-    length = len(os.listdir("./data/images"))
-    print(length)
+    # ohsome2label label
+    os.system(f'ohsome2label --schema {PATH_CONFIG_SCHEMA} --config {PATH_CONFIG_TEST} label')
+    # ohsome2label image
+    os.system(f'ohsome2label --schema {PATH_CONFIG_SCHEMA} --config {PATH_CONFIG_TEST} image')
+
+    # os.system(f'ohsome2label --schema {PATH_CONFIG_SCHEMA} --config {PATH_CONFIG_TEST} printcfg')
+
+    length = len(os.listdir(PATH_IMAGE))
+    print(f'tile num: {length}')
 
     return length
 

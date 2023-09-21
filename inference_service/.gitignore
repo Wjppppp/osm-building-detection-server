@@ -1,4 +1,5 @@
 venv_inference
 src/label/data/*
+src/data
 src/inference/prediction
 src/inference/models/*

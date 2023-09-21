@@ -12,4 +12,4 @@ myvenv/Scripts/activate.bat
 myvenv/Scripts/activate.ps1
 ```
 
-**Note: If conda environment is active, deactivate it firstly via `conda deactivate`.**git
+**Note: If conda environment is active, deactivate it firstly via `conda deactivate`.**

@@ -59,4 +59,9 @@ RUN apt-get update &&\
 RUN cd ohsome2label &&\
     pip install --editable .
 
+# microservice dependencies
+RUN pip install flask
+RUN pip install flask_cors
+# COPY requirements.txt requirements.txt
+# RUN pip install -r requirements.txt
 
