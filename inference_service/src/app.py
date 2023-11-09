@@ -41,10 +41,11 @@ def respond_inference():
     print("request", request)
     print(f'body: {body}')
 
+    api_tk = body['api_key']
     extend = body['bbox']
     model = body['model']
 
-    length, geojson, num = inference(extend, model)
+    length, geojson, num = inference(extend, model, api_tk)
 
     end = time.time()
 

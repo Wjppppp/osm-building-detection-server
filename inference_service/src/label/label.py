@@ -10,7 +10,7 @@ def refresh_dir(PATH):
         shutil.rmtree(PATH)
         os.makedirs(PATH)
 
-def generate_image_tiles(extend):
+def generate_image_tiles(extend, api_token):
 
     #  modify config.yaml
     with open(PATH_CONFIG_TEMPLATE, "r") as ymlfile:
@@ -18,6 +18,7 @@ def generate_image_tiles(extend):
         # print(cfg)
 
     cfg['osm']['bboxes'] = extend
+    cfg['image']['api_token'] = api_token
 
     with open(PATH_CONFIG_TEST,"w") as file:
         yaml.dump(cfg, file)

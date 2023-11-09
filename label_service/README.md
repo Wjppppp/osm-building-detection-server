@@ -34,4 +34,5 @@ python ./src/app.py
 To test, visit 
 
 http://127.0.0.1:7000/
+
 http://127.0.0.1:7000/details/<tag>
